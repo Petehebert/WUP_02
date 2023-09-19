@@ -29,6 +29,14 @@ $H_A$ :There is a difference in the vitamin c content of cabbages based on culti
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
+
+Vitamin C content is a numerical variable, cultivation method is a factor. 
+
+
+```{r}
+data = veggy 
+```
+
 # Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
@@ -39,15 +47,45 @@ $H_A$ :There is a difference in the vitamin c content of cabbages based on culti
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+
+```{r}
+boxplot(VitC~Cult, data=veggy)
+```
+
+The boxplot shows the VitC of c39 and c52. The right side has more VitC (c52) and the average is around 68.
+
+
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+
+```{r}
+favstats(VitC~Cult,data=veggy)
+```
+
+
+This table shows that the averages are different. C39 has a average of 51.5 and C52 has a average of 64.4. There is around a 13 average difference. 
+
+
 ## Inferential Results
 
+
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+
+
+```{r}
+t.test(VitC ~ Cult, data=data)
+```
+
+
+This shows that the P value is 0.00000003405 meaning that we reject the null hypothesis.
 
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+The original question was Is there a difference in average VitC between c39 and c52 cultivation methods.The P value of the t.test was less than 0.05 so we rejected the null hypothesis so we can conclude that there is a difference in average. We found out that the Vitc in c52 was better then c39.
+
+
